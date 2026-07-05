@@ -52,9 +52,9 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
 <section class="border-b border-stone-200 dot-grid">
   <div class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center">
     <div>
-      <p class="text-sm text-accent font-semibold uppercase tracking-widest mb-5">The runtime evidence layer for regulated AI</p>
-      <h1 class="font-serif text-5xl md:text-6xl leading-[0.95] mb-6">Examiner-grade evidence for every AI decision your bank makes.</h1>
-      <p class="text-xl text-stone-700 mb-8 max-w-xl leading-relaxed">SR 26-2 governs your models. It explicitly excludes your agents. Atestia is the open-standard runtime evidence layer for the gap — built to the paragraphs your examiner will quote: SR 26-2 §VII, Interagency TPRM Guidance 2023, BCBS 239 Principles 1-11, and ECOA Reg B §1002.9 + CFPB Circular 2023-03.</p>
+      <p class="text-sm text-accent font-semibold uppercase tracking-widest mb-5">Decision evidence for automated financial-crime monitoring</p>
+      <h1 class="font-serif text-5xl md:text-6xl leading-[0.95] mb-6">The system of record for what your monitoring system decided — including what it decided not to escalate.</h1>
+      <p class="text-xl text-stone-700 mb-8 max-w-xl leading-relaxed">On June 29, 2026 the SEC fined Merrill Lynch $7.5M because its monitoring system suppressed below-threshold alerts and the firm couldn't produce a record of who saw the below-the-line testing, what was decided, or why. Atestia records every decision your monitoring engine makes — including the ones it doesn't escalate — with a tamper-evident, hash-chain-verifiable trail, and generates the examiner packet on demand. Your engine stays; we're the flight-data recorder on top of it. <span class="text-stone-500">Vendor-model and agentic-AI evidence (SR 26-2) is the expansion, not the entry.</span></p>
       <div class="flex flex-wrap gap-4 mb-6">
         <a href="tier4/spec.html" class="px-6 py-3 bg-ink text-white font-semibold rounded hover:bg-accent transition">Read the spec</a>
         <a href="https://github.com/Atestia/tier4-mcp-server" class="px-6 py-3 border-2 border-ink text-ink font-semibold rounded hover:bg-ink hover:text-white transition">Star on GitHub</a>
@@ -104,28 +104,28 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
 <section class="border-b border-stone-200 py-20">
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-12">
-      <p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">Why now · industry context</p>
-      <h2 class="font-serif text-4xl md:text-5xl leading-tight">Banks have shipped agentic AI faster than they shipped the evidence layer.</h2>
+      <p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">Why now · the enforcement pattern</p>
+      <h2 class="font-serif text-4xl md:text-5xl leading-tight">The record examiners now ask for is the one nobody keeps.</h2>
     </div>
-    <p class="text-center text-stone-600 mb-10 max-w-3xl mx-auto text-sm italic">These are public disclosures from US Tier-1 banks about their own AI deployments. Atestia is not affiliated with these institutions; these figures illustrate the cardinality of the evidence problem the industry now faces.</p>
+    <p class="text-center text-stone-600 mb-10 max-w-3xl mx-auto text-sm italic">These are public regulatory enforcement actions. Atestia is not affiliated with these institutions; the figures illustrate a repeating failure mode: automated monitoring suppressed events below the line, and the firm could not evidence the disposition.</p>
     <div class="grid md:grid-cols-3 gap-8">
       <div>
-        <p class="font-mono text-5xl font-bold text-accent mb-2">~250K</p>
-        <p class="font-semibold mb-1">JPMorgan LLM Suite seats</p>
-        <p class="text-sm text-stone-600">Per public JPM disclosures, 2025-2026. <a href="https://www.ciodive.com/news/ai-banking-roi-jobs-jpmorgan-bofa-wells-goldman/815479/" class="text-accent hover:underline">Source</a></p>
+        <p class="font-mono text-5xl font-bold text-accent mb-2">$7.5M</p>
+        <p class="font-semibold mb-1">SEC v. Merrill Lynch, Jun 2026</p>
+        <p class="text-sm text-stone-600">Below-threshold alerts suppressed with no record of who reviewed the below-the-line testing or what was decided. The third Merrill AML action since 2017. <a href="resources/blog/merrill-7-5m-teardown.html" class="text-accent hover:underline">Read the teardown</a></p>
       </div>
       <div>
-        <p class="font-mono text-5xl font-bold text-accent mb-2">~215K</p>
-        <p class="font-semibold mb-1">Wells Fargo Agentspace</p>
-        <p class="text-sm text-stone-600">Per WF agentic AI workflows disclosure. <a href="https://www.americanbanker.com/news/how-wells-fargo-is-building-agentic-ai-into-its-workflows" class="text-accent hover:underline">Source</a></p>
+        <p class="font-mono text-5xl font-bold text-accent mb-2">18+</p>
+        <p class="font-semibold mb-1">Same failure mode</p>
+        <p class="text-sm text-stone-600">TD, USAA, Canaccord and a dozen more AML actions turned on missing or undocumented disposition, threshold-tuning, or coverage records. <a href="resources/field-to-fine.html" class="text-accent hover:underline">Field-to-fine map</a></p>
       </div>
       <div>
-        <p class="font-mono text-5xl font-bold text-accent mb-2">46.5K</p>
-        <p class="font-semibold mb-1">Goldman GS AI Assistant</p>
-        <p class="text-sm text-stone-600">Public deployment disclosures, multi-vendor. <a href="https://evidentinsights.com/ai-index/" class="text-accent hover:underline">Evident AI Index</a></p>
+        <p class="font-mono text-5xl font-bold text-accent mb-2">~2,830</p>
+        <p class="font-semibold mb-1">Small FINRA firms</p>
+        <p class="text-sm text-stone-600">Run an annual 3310 independent AML test by rule — a 17a-8 evidence flank the enterprise vendors don't chase.</p>
       </div>
     </div>
-    <p class="text-center text-stone-700 mt-10 max-w-3xl mx-auto">When an examiner asks for the vendor model invocation evidence on a specific credit decision six months ago, the bank has no runtime trail to point to. <strong>That is the gap SR 26-2 explicitly leaves open for agentic AI — and the gap ECOA Reg B + CFPB Circular 2023-03 already require banks to close today.</strong></p>
+    <p class="text-center text-stone-700 mt-10 max-w-3xl mx-auto">When an examiner samples your suppressed population and asks who saw a below-the-line event and why it wasn't escalated, most firms have no defensible record. <strong>Atestia is the tamper-evident record of every disposition — the one whose absence the Merrill $7.5M penalized.</strong></p>
   </div>
 </section>
 
