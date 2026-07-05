@@ -137,7 +137,7 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
         <div class="memo">
           <p class="lbl">Memo — from CRO</p>
           <p class="mb-2">Three lines of business deployed agentic AI tools last year without going through the model risk governance flow. Commercial credit. Treasury services. The Wealth desk. None of it surfaced in our vendor model inventory because nobody called it a "model".</p>
-          <p class="mb-2">The OCC's SR 26-2 examination cycle begins Q1 2027. We have eight months.</p>
+          <p class="mb-2">The SEC's $7.5M Merrill Lynch action (June 2026) made below-the-line disposition evidence table stakes. If a monitoring system suppresses an alert, we have to show who saw it, what was decided, and why.</p>
           <p>I need an answer by Friday on whether we can produce examiner-ready evidence for these three deployments without ripping them out. — CRO</p>
         </div>
       </div>
@@ -163,7 +163,7 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
       <details class="disclose" open>
         <summary><span class="num">01</span><div class="flex-1"><p class="font-semibold text-base mb-1">"It's not a model — it's just an LLM wrapper"</p><p class="text-sm text-stone-600">Commercial credit deployed a Bedrock-based loan-screening assistant in Q2 2025. The vendor LLM never wrote the credit decision; it generated explanations and suggested next steps. From the LOB perspective, no model risk.</p></div><span class="chev">▼</span></summary>
         <div class="body">
-          <p class="text-sm text-stone-700 leading-relaxed mb-3">But SR 26-2 Section III.A pulled vendor LLMs into model risk scope when the institution's agent calls them. The reasoning chain the LLM produced influenced the loan officer's recommendation. That's a model in the supervisory definition.</p>
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">But SR 26-2 reaffirms that model-risk accountability for a vendor model stays with the bank that invokes it — the LLM wrapper does not move the obligation to the vendor. The reasoning chain the LLM produced influenced the loan officer's recommendation. That's a model in the supervisory definition, and the same evidentiary standard the Merrill action turned on applies: who decided, and on what basis.</p>
           <p class="text-sm text-stone-700 leading-relaxed">You have no record of which prompts produced which recommendations, which vendor model versions were in play, which decisions were affected, or whether the customer's protected-class characteristics ever entered the prompt context. You need to reconstruct it. From logs scattered across Azure, the agent platform, and the credit officer's email.</p>
         </div>
       </details>
@@ -171,8 +171,8 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
       <details class="disclose">
         <summary><span class="num">02</span><div class="flex-1"><p class="font-semibold text-base mb-1">"It runs in the cloud — the vendor owns the model"</p><p class="text-sm text-stone-600">Treasury services deployed an LLM-driven liquidity recommendation tool. The vendor (a name brand SaaS) said they handled compliance. The LOB filed nothing with you.</p></div><span class="chev">▼</span></summary>
         <div class="body">
-          <p class="text-sm text-stone-700 leading-relaxed mb-3">SR 26-2 explicitly says: when the bank invokes a vendor model, model risk accountability stays with the bank. Not the vendor. The vendor's SOC 2 covers their operational security; it does not cover your model risk obligation.</p>
-          <p class="text-sm text-stone-700 leading-relaxed">You need a vendor model inventory for the treasury tool. You need invocation lineage for every recommendation it produced that influenced a treasury decision over the past 12 months. You need a packet examiner-ready by Q1 2027.</p>
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">SR 26-2 reaffirms it: when the bank invokes a vendor model, model risk accountability stays with the bank. Not the vendor. (The guidance carves out generative and agentic AI and sets no implementation deadline — the agencies have an open RFI on agentic AI — so this is the standing responsibility, not a new mandate.) The vendor's SOC 2 covers their operational security; it does not cover your model risk obligation.</p>
+          <p class="text-sm text-stone-700 leading-relaxed">You need a vendor model inventory for the treasury tool. You need invocation lineage for every recommendation it produced that influenced a treasury decision over the past 12 months. You need a packet you can produce on demand.</p>
         </div>
       </details>
 
@@ -187,7 +187,7 @@ body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;-webkit-font-smoothin
 
     <div class="diagram mb-10">
       <img src="diagrams/02-how-we-got-here.png" alt="Editorial timeline diagram showing agentic AI deployment curve rising steeply 2023-2026 while governance curve barely rises, with cyan SR 26-2 effective marker" onerror="this.parentElement.innerHTML='<div class=&quot;p-16 text-center text-stone-400 font-mono text-sm&quot;>Timeline diagram generating…</div>'" />
-      <div class="diagram-caption">Scene 02 · the evidence gap, 2023 - Q1 2027</div>
+      <div class="diagram-caption">Scene 02 · the decision-evidence gap</div>
     </div>
 
     <p class="text-lg text-stone-700 mb-2">You start to write the answer to the CRO's question. Halfway through paragraph three, you realize you don't have a tool to do this with.</p>
@@ -428,7 +428,7 @@ tools = toolkit.get_tools()  <span class="c"># 10 Atestia tools registered</span
       <details class="disclose" open>
         <summary><span class="num">!</span><div class="flex-1"><p class="font-semibold text-base mb-1">SOC 2 status — what's actually true today</p><p class="text-sm text-stone-600">In progress, not held. Timeline is contractually committed.</p></div><span class="chev">▼</span></summary>
         <div class="body">
-          <p class="text-sm text-stone-700 leading-relaxed mb-3">Atestia is in pre-audit for SOC 2 Type 1, targeting Q1 2027. Type 2 (six-month observation period) targets Q3 2027. The interim control matrix is documented under Vanta and is available to your CISO under NDA today.</p>
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">Atestia has SOC 2 Type I in progress. Type 2 (six-month observation period) follows the Type I report. The interim control matrix is documented under Vanta and is available to your CISO under NDA today.</p>
           <p class="text-sm text-stone-700 leading-relaxed">For Tier-1 enterprise customers, the Master Services Agreement includes specific timeline commitments for SOC 2 Type 1 and Type 2 with contractual remedies if those dates slip. Read the MSA template before procurement starts.</p>
         </div>
       </details>
@@ -452,7 +452,7 @@ tools = toolkit.get_tools()  <span class="c"># 10 Atestia tools registered</span
       <details class="disclose">
         <summary><span class="num">!</span><div class="flex-1"><p class="font-semibold text-base mb-1">Will the examiner actually accept this format?</p><p class="text-sm text-stone-600">The Tier-4 specification is being ratified through a Delaware 501(c)(6) working group with bank seats.</p></div><span class="chev">▼</span></summary>
         <div class="body">
-          <p class="text-sm text-stone-700 leading-relaxed mb-3">There is no precedent for "examiner-accepted" because no examination cycle has happened yet — the first SR 26-2 cycle begins Q1 2027. But the OCC 2013-29 packet format Atestia generates matches the long-established field schema that bank examiners have used for traditional model risk packets since 2013.</p>
+          <p class="text-sm text-stone-700 leading-relaxed mb-3">The precedent that matters already exists: the SEC's $7.5M Merrill Lynch action (June 2026) turned on a firm's inability to produce a record of who saw a suppressed alert, what was decided, and why. The OCC 2013-29 packet format Atestia generates matches the long-established field schema that bank examiners have used for traditional model risk packets since 2013.</p>
           <p class="text-sm text-stone-700 leading-relaxed">The novel layer (SR 26-2 attestation, runtime lineage capture) is being ratified through the Tier-4 Compliance Working Group, an industry body with seats for Tier-1 banks, audit firms, and regulator-adjacent observers. The first 10 Charter Member banks are authoring the format together. If your bank wants a seat at that table, talk to us about Charter Member status.</p>
         </div>
       </details>

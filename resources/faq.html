@@ -58,7 +58,7 @@
 
 <details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">What identity providers do you support?</summary><p class="mt-3 text-sm text-stone-700">SAML 2.0 and SCIM for Enterprise tier. Tested with Okta, Auth0, Microsoft Entra ID, Ping Identity, and Google Workspace. Clerk-backed authentication for Atestia Pro Starter/Pro/Scale tiers. Multi-factor authentication is required for administrative actions across all tiers.</p></details>
 
-<details class="p-4"><summary class="font-semibold text-stone-800">How do we configure retention policies?</summary><p class="mt-3 text-sm text-stone-700">Default is 7 years SR 26-2-compliant. Customers can configure shorter retention via policy (subject to record-keeping obligations). All retention changes are logged. Cold storage tier (S3 + KMS) activates automatically after 90 days; customer KMS access required for retrieval.</p></details>
+<details class="p-4"><summary class="font-semibold text-stone-800">How do we configure retention policies?</summary><p class="mt-3 text-sm text-stone-700">Default is 7 years, aligned with standard bank record-keeping obligations. Customers can configure shorter retention via policy (subject to record-keeping obligations). All retention changes are logged. Cold storage tier (S3 + KMS) activates automatically after 90 days; customer KMS access required for retrieval.</p></details>
 </div>
 
 <h2 class="font-serif text-3xl mb-6 mt-12">First packet generation</h2>
@@ -92,7 +92,7 @@
 <h2 class="font-serif text-3xl mb-6 mt-12">Examiner readiness</h2>
 <div class="bg-white border border-stone-200 rounded p-2">
 
-<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">Has the OCC accepted a Tier-4 packet at an examination?</summary><p class="mt-3 text-sm text-stone-700">The format is brand new (June 2026). No examination cycle has tested the format yet. However, the format mirrors the structure of existing OCC 2013-29 and Federal Reserve SR 11-7 evidence patterns that examiners have used for 12+ years. The Working Group is engaging examiners directly during the v1.2 RFC period to capture preferences before the first 2027 cycle.</p></details>
+<details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">Has the OCC accepted a Tier-4 packet at an examination?</summary><p class="mt-3 text-sm text-stone-700">The format is brand new (June 2026). No examination cycle has tested the format yet. However, the format mirrors the structure of existing OCC 2013-29 and Federal Reserve SR 11-7 evidence patterns that examiners have used for 12+ years. The Working Group is engaging examiners directly during the v1.2 RFC period to capture preferences before the first examination cycle.</p></details>
 
 <details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">What if our examiner wants something Atestia doesn't produce?</summary><p class="mt-3 text-sm text-stone-700">We modify the spec to match examiner workflow, not the other way around. Custom packet generators are built within 7 business days. The Tier-4 v1.1 RFC (v1.2 next) process is specifically designed to incorporate examiner feedback. If your examination experience reveals a format gap, we ship a new generator.</p></details>
 
@@ -100,7 +100,7 @@
 
 <details class="border-b border-stone-200 p-4"><summary class="font-semibold text-stone-800">Does Atestia replace our SR 11-7 / SR 26-2 validation process?</summary><p class="mt-3 text-sm text-stone-700">No. Atestia captures runtime evidence and generates packets. Pre-deployment validation work (model card creation, fairness testing, business policy alignment) remains your MRM team's responsibility. Atestia automates the evidence layer; validation remains intellectual labor.</p></details>
 
-<details class="p-4"><summary class="font-semibold text-stone-800">Can we use the open-source tier for examiner-facing packets?</summary><p class="mt-3 text-sm text-stone-700">Yes, the open-source reference implementation generates fully Tier-4-conformant packets. However, the enterprise tier adds 7-year SR 26-2-compliant retention enforcement, customer-held KMS, indemnification, 24-7 support, and dedicated SE support during examination preparation. Most banks adopt the open-source tier in pilots and upgrade to enterprise pre-production.</p></details>
+<details class="p-4"><summary class="font-semibold text-stone-800">Can we use the open-source tier for examiner-facing packets?</summary><p class="mt-3 text-sm text-stone-700">Yes, the open-source reference implementation generates fully Tier-4-conformant packets. However, the enterprise tier adds 7-year retention enforcement aligned with record-keeping obligations, customer-held KMS, indemnification, 24-7 support, and dedicated SE support during examination preparation. Most banks adopt the open-source tier in pilots and upgrade to enterprise pre-production.</p></details>
 </div>
 
 <h2 class="font-serif text-3xl mb-6 mt-12">Renewal + expansion</h2>

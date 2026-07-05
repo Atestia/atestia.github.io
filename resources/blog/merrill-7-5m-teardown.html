@@ -1,0 +1,101 @@
+<!doctype html>
+<!-- DRAFT — pending counsel review of the SEC-order characterization before merge/publish. -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg"><title>The $7.5M Merrill AML action, taken apart: a missing below-the-line ledger — Atestia</title>
+<meta name="description" content="A field-by-field teardown of the June 2026 SEC action against Merrill Lynch: what a below-the-line disposition record is, why its absence is the finding, and how a tamper-evident decision-evidence ledger closes the gap." />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="../../assets/tailwind.css" />
+<style>body{font-family:'Helvetica Neue','Inter',Arial,sans-serif;color:#1c1917;background:#fafaf9}.font-serif{font-family:'Iowan Old Style','Charter','Georgia',serif;letter-spacing:-0.02em}article p{line-height:1.7;color:#44403c;margin-bottom:1em}article h2{font-family:'Iowan Old Style','Charter','Georgia',serif;font-size:2rem;margin-top:3rem;margin-bottom:1rem;letter-spacing:-0.02em}article h3{font-weight:600;font-size:1.25rem;margin-top:2rem;margin-bottom:0.5rem}article ul{list-style:disc;padding-left:1.5rem;margin-bottom:1em}article li{margin-bottom:0.5rem;color:#44403c}article code{background:#f5f5f4;padding:2px 6px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:0.9em}article pre{background:#1c1917;color:#fafaf9;padding:1.5rem;border-radius:8px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:0.85rem;margin:1.5rem 0;line-height:1.6}article a{color:#0e7490;text-decoration:underline}</style>
+</head>
+<body>
+<header class="border-b border-stone-200 bg-paper/95 backdrop-blur sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<a href="../../index.html" class="font-bold text-xl tracking-tight">Atestia</a>
+<nav class="hidden md:flex space-x-8 text-sm text-stone-700">
+<a href="../../platform.html" class="hover:text-accent">Platform</a>
+<a href="../../solutions/banks.html" class="hover:text-accent">Solutions</a>
+<a href="../../pricing.html" class="hover:text-accent">Pricing</a>
+<a href="../../tier4/index.html" class="hover:text-accent">Tier-4 spec</a>
+<a href="../index.html" class="text-accent font-semibold">Resources</a>
+<a href="https://github.com/Atestia/tier4-mcp-server" class="hover:text-accent">GitHub</a>
+</nav>
+<a href="../../contact.html" class="text-sm font-semibold bg-ink text-white px-5 py-2 rounded hover:bg-accent">Book a demo</a>
+</div></header>
+
+<article class="max-w-3xl mx-auto px-6 py-16">
+<p class="text-sm text-accent font-semibold uppercase tracking-widest mb-3">ENFORCEMENT TEARDOWN · 9 min read</p>
+<h1 class="font-serif text-4xl md:text-5xl leading-tight mb-6">The $7.5M Merrill AML action, taken apart.</h1>
+<p class="text-stone-500 text-sm mb-4">Atestia · Published 2026-07-05</p>
+<p class="text-stone-600 text-sm italic mb-12 border-l-2 border-stone-300 pl-4">This is a technical reading of a public enforcement action for compliance and model-risk teams. It is not legal advice, and it characterizes the SEC's order as published. Nothing here reproduces confidential suspicious-activity information.</p>
+
+<p>On June 29, 2026 the SEC announced a $7.5M penalty against Merrill Lynch in a Bank Secrecy Act / anti-money-laundering matter. Strip away the headline number and the finding is narrow and specific — and it is not the one most firms brace for. Merrill was not fined because its monitoring engine was badly tuned, or because it missed a typology. It was fined, according to the order, because its automated monitoring <strong>suppressed a population of below-threshold events</strong> and the firm could not produce a defensible record of <em>who reviewed the below-the-line testing, what was decided, and why.</em></p>
+
+<p>In other words: the failure was evidentiary, not analytical. The analysis existed. The <strong>record of the decision</strong> did not.</p>
+
+<h2>What "below the line" means</h2>
+
+<p>An automated transaction-monitoring system scores event groups and escalates the ones that clear a threshold. Everything below that threshold — the "below-the-line" (BTL) population — is, by design, <em>not</em> escalated. Sound programs periodically test that below-the-line set: sample it, check whether the threshold is set correctly, and confirm nothing suspicious is being systematically suppressed. That testing is a control. Like any control, an examiner will ask you to evidence it.</p>
+
+<p>The evidentiary question after Merrill is simple to state and hard to answer from most systems:</p>
+
+<pre>For a specific below-threshold event, six months ago:
+  - What score did the system assign?
+  - What threshold was in force at that moment?
+  - Who reviewed it, and when?
+  - What did they decide, and what was the stated reason?
+  - Has that record been altered since?</pre>
+
+<p>Most monitoring stacks can answer the first two from logs. The middle three live in spreadsheets, ticketing tools, or nowhere. The last one — <em>has this record been altered</em> — almost no one can answer at all.</p>
+
+<h2>The field-to-fine mapping</h2>
+
+<p>The useful way to read an enforcement action is to map each finding to the specific evidence field whose absence produced it. Merrill is not the only data point; the same failure mode recurs across the last decade of AML actions. A partial map:</p>
+
+<ul>
+<li><strong>Merrill 2026 →</strong> a per-decision <code>suppression_justification</code>: the recorded reason a below-the-line event was not escalated.</li>
+<li><strong>Merrill 2023 →</strong> a <code>threshold_version_id</code> stamped on each decision: which threshold policy was in force when the call was made.</li>
+<li><strong>TD 2024 →</strong> coverage and feed-integrity evidence: proof the monitored population was complete.</li>
+<li><strong>USAA →</strong> tuning-cadence evidence: that thresholds were reviewed on a defensible schedule.</li>
+</ul>
+
+<p>We maintain the full version — every schema field annotated with the enforcement action its absence produced — as a living document: <a href="../field-to-fine.html">the field-to-fine map</a>.</p>
+
+<h2>What actually closes the gap</h2>
+
+<p>The fix is not a better model. It is a <strong>tamper-evident record of every disposition the monitoring system makes</strong> — including the below-the-line events it does not escalate — that an examiner can be handed on demand and can trust has not been edited after the fact.</p>
+
+<p>That is precisely what the Atestia reference implementation captures. Each disposition is written to a per-tenant hash chain:</p>
+
+<pre>{
+  "dispositionId": "tier4-disp-...",
+  "eventGroupId": "evt-1002",
+  "alertScore": 12,
+  "thresholdValue": 20,
+  "btl_sampling_flag": true,
+  "dispositionOutcome": "suppressed",
+  "suppression_justification": "Known payroll pattern; prior 90-day review cleared.",
+  "threshold_version_id": "policy-2026-Q3-v1",
+  "reviewer": "analyst-42",
+  "prevHash": "…", "recordHash": "…", "sequence": 41
+}</pre>
+
+<p>A <code>suppressed</code> or <code>dismissed</code> outcome is <strong>rejected</strong> unless it carries a justification — the system will not let you record the exact omission Merrill was fined for. Each record binds the hash of the prior one, so altering any historical decision breaks every subsequent record's hash; a one-command <code>verify</code> proves the chain end to end, and even editing a single queryable field out of band is detected. On demand, the chain renders to an <a href="inside-a-tier4-packet.html">Examiner Evidence Packet</a> whose centerpiece is the Below-the-Line Response Ledger.</p>
+
+<h2>The obvious objection</h2>
+
+<p>"Isn't a permanent record of near-misses just discovery risk — plaintiff ammunition?" It is the first question every CCO asks, and it has a clean answer: retention is configurable to the applicable record-keeping rule (for broker-dealers, the 31 CFR 1023.320(d) five-year window), access is need-to-know with its own access audit, and — decisively — the Merrill $7.5M was for the <em>absence</em> of the record, not its presence. Unrecorded rationale is the liability. We wrote the full argument up: <a href="../../sales/discoverability.html">the discoverability one-pager</a>.</p>
+
+<h2>Why this matters this quarter</h2>
+
+<p>The Merrill order is recent, and the professional commentary that will name this problem for the market is still forming. Firms that put the disposition ledger in place now are answering the examiner's next question in one click; the alternative is reconstructing a suppressed population by hand under a consent order. Your monitoring engine stays exactly where it is. Atestia is the flight-data recorder that sits on top of it.</p>
+
+<p class="mt-10"><a href="../../contact.html" class="inline-block px-6 py-3 bg-ink text-white font-semibold rounded hover:bg-accent transition">See the 4-minute Merrill-replay demo</a></p>
+</article>
+
+<footer class="border-t border-stone-200 py-10 text-center text-sm text-stone-500">
+<p>© 2026 Atestia Inc. · Operated by FuteurCredX Inc. · <a href="../../legal/terms.html" class="hover:text-accent">Terms</a> · <a href="../../legal/privacy.html" class="hover:text-accent">Privacy</a></p>
+</footer>
+</body>
+</html>
